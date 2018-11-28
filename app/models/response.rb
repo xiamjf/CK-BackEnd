@@ -1,3 +1,3 @@
 class Response < ApplicationRecord
-  belongs_to :question, dependent: :destroy
+  belongs_to :question
 end

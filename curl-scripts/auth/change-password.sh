@@ -13,3 +13,5 @@ curl "http://localhost:4741/change-password" \
   }'
 
 echo
+
+# TOKEN=blah OLDPW=ccc NEWPW=NJF sh curl-scripts/auth/change-password.sh
