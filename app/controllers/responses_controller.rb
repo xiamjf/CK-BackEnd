@@ -1,9 +1,9 @@
-class ResponsesController < ApplicationController
+class ResponsesController < ProtectedController
   before_action :set_response, only: [:show, :update, :destroy]
 
   # GET /responses
   def index
-    @responses = Response.all
+    @responses = current_user.responses.all
 
     render json: @responses
   end
@@ -15,7 +15,7 @@ class ResponsesController < ApplicationController
 
   # POST /responses
   def create
-    @response = Response.new(response_params)
+    @response = current_user.responses.new(response_params)
 
     if @response.save
       render json: @response, status: :created, location: @response
@@ -41,7 +41,7 @@ class ResponsesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_response
-      @response = Response.find(params[:id])
+      @response = current_user.responses.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.

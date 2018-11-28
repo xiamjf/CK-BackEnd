@@ -1,9 +1,9 @@
-class UserQuestionsController < ApplicationController
+class UserQuestionsController < ProtectedController
   before_action :set_user_question, only: [:show, :update, :destroy]
 
   # GET /user_questions
   def index
-    @user_questions = UserQuestion.all
+    @user_questions = current_user.user_questions.all
 
     render json: @user_questions
   end
@@ -15,7 +15,7 @@ class UserQuestionsController < ApplicationController
 
   # POST /user_questions
   def create
-    @user_question = UserQuestion.new(user_question_params)
+    @user_question = current_user.user_questions.new(user_question_params)
 
     if @user_question.save
       render json: @user_question, status: :created, location: @user_question
@@ -41,7 +41,7 @@ class UserQuestionsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user_question
-      @user_question = UserQuestion.find(params[:id])
+      @user_question = current_user.user_questions.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
