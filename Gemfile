@@ -12,7 +12,7 @@ gem 'rails', '~> 5.2.1'
 
 group :development, :test do
   gem 'rails-erd'
-  gem 'seed-dump'
+  gem 'seed_dump'
   gem 'byebug', '~> 10.0.0', platform: :mri
   gem 'dotenv-rails', '~> 2.2.1'
   gem 'pry', '~> 0.11.3'
